@@ -22,9 +22,9 @@ Para poder correr estos algoritmos realizados es necesario cumplir con los sigue
 
 para hacer esto debes de pegar o escribir los sigueintes comandos en la terminal integrada de VS Code
 
-```bash
-dotnet run --project FolderName // para correr un algoritmo especifico
-dotnet build --project FolderName // para compilar un algoritmo especifico
+    ```bash
+    dotnet run --project FolderName # para correr un algoritmo especifico
+    dotnet build --project FolderName # para compilar un algoritmo especifico
 
 
 ## ¿Cómo crear un directorio local de este repositorio?
