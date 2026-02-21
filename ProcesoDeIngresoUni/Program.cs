@@ -6,9 +6,13 @@ namespace ProcesoIngreso
 {
     class Program 
     {
+        private static string userName = ""; 
+        private static string userIcfes = "";
+        private static string userCarrer = ""; 
+        private static string userFaculty = "";  
         private static List<string> UserName = new List<string>(); 
         private static List<string> UserPasswsword = new List<string>();
-        private static Dictionary<string, List<string>> UserDocuments = new Dictionary<string, List<string>>(); 
+        private static Dictionary<string, List<string>> UserBasicInfo = new Dictionary<string, List<string>>(); 
         private static List <int> UserId = new List<int>(); 
         private static List<bool> IsRegister = new List<bool>(); 
         private static List<bool> IsAdmited = new List<bool>(); 
@@ -70,12 +74,20 @@ namespace ProcesoIngreso
             switch (accion)
             {
                 case 1: 
-                    Inscribirse(); 
+                    SingUp(); 
                     Console.WriteLine("Acción Exitosa, espere un momento..."); 
                     Thread.Sleep(3000); 
                     break; 
                 case 2: 
-                    Console.WriteLine("Estado De Aspirante");
+                    
+                    for (int n = 0; n>UserName.Count; n++)
+                    {
+                        
+                        if (UserName[n] == userName) 
+                        {
+                            
+                        }
+                    }
                     Console.WriteLine("Acción Exitosa, espere un momento..."); 
                     Thread.Sleep(3000); 
                     break; 
@@ -104,7 +116,7 @@ namespace ProcesoIngreso
                     break;         
             }
         }
-        private static bool Inscribirse()
+        private static bool SingUp()
         {
             //Establecemos información para el usuario
             Console.WriteLine("=============="); 
@@ -116,7 +128,7 @@ namespace ProcesoIngreso
             {
                 //Establecemos entradas para el usuario
                 Console.Write("Ingresa tu Nombre Completo: "); 
-                string userName = Console.ReadLine(); 
+                userName = Console.ReadLine(); 
 
                 Console.Write("Ingresa tu tarjeta de identidad: "); 
                 var userId = Console.ReadLine(); 
@@ -182,16 +194,44 @@ namespace ProcesoIngreso
                         string userInvoice = Console.ReadLine().ToLower(); 
 
                         Console.WriteLine("Ingresa el resultado de tu prueba saber");
-                        string userIcfes = Console.ReadLine().ToLower(); 
+                        userIcfes = Console.ReadLine().ToLower(); 
 
                         Console.WriteLine("Ingresa formulario (lleno o no completado)");
                         string userForm = Console.ReadLine().ToLower(); 
 
-                        if (userInvoice == "pagada" && userForm == "lleno")
+                        // Mostramos las carreras disponibles
+                        Console.WriteLine("Ingresa una de las sigueintes carreras: ");
+                        Dictionary <string, List<string>> carreras = new Dictionary<string, List<string>>
+                        {
+
+                            {"Carreras de Ingenieria", new List<string> {"Ingenieria civil", "Ingenieria de Sistemas", "Ingenieria Ambiental", "Ingenieria Industrial", "Ingenieria Mecanica", "Arquitectura"}},
+                            {"Carreas de Ciencias Basicas", new List<string> {"Biología", "Quimica", "Arqueología"}}, 
+                            {"Carreras de Humanidades", new List<string> {"trabajo Social", "Psicología","Comunicación Social" }},
+
+                        }; 
+
+                        foreach(var facultad in carreras)
+                        {
+                            Console.WriteLine($"Facultad: {facultad.Key}");
+                            foreach(var carrera in carreras)
+                            {
+                                Console.WriteLine($"{carrera.Value}"); 
+                            } 
+                        }
+
+                        //le pedimos al usuario que ingrese una carrera
+                        Console.Write("\nIngresa una facultad: "); 
+                        userFaculty = Console.ReadLine(); 
+
+                        Console.Write("\nIngresar una carrera: ");
+                        userCarrer = Console.ReadLine(); 
+
+                        //Verificamos que el usuario ingrese los docuemntos
+                        if (userInvoice == "pagada" && userForm == "lleno" && userIcfes != null)
                         {
                             Console.WriteLine("Completaste tu registro!");
                             Console.WriteLine($"Tú usario es: {userName}, tu contraseña es: {userPassword}");
-                            UserDocuments.Add(userName, new List<string> {userForm, userIcfes, userInvoice});
+                            UserBasicInfo.Add(userName, new List<string> {userForm, userIcfes, userInvoice, userFaculty, userCarrer});
                             return true;   
                         }   
                         else
