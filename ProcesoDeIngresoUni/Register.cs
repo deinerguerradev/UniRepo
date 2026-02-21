@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace ProcesoIngreso
 {
-    public static class SingUpProcess
+    public static class Register
     {
         public static bool SingUp()
         {
@@ -26,7 +26,7 @@ namespace ProcesoIngreso
                 var userId = Console.ReadLine(); 
 
                 Console.Write("Ingresa tu tarjeta contraseña: "); 
-                string userPasswsword = Console.ReadLine(); 
+                Program.userPassword = Console.ReadLine(); 
 
                 //creamos una variable que almacena la cantidad de caracteres que tiene el userId
                 int cantidadNumerosId = userId.ToString().Length; 
@@ -35,7 +35,7 @@ namespace ProcesoIngreso
                 if (int.TryParse(userId, out int id)  && cantidadNumerosId <= 10)
                 {
                     //Agregamos la infromación a la lista
-                    Program.UserPasswsword.Add(userPasswsword); 
+                    Program.UserPasswsword.Add(Program.userPassword); 
                     Program.UserName.Add(Program.userName);
                     Program.UserId.Add(id);
 
@@ -45,10 +45,10 @@ namespace ProcesoIngreso
                     Program.IsEnrolled.Add(false); 
                     Program.IsRegister.Add(false);
 
-                    CargarDocuemntos(Program.userName, userPasswsword); 
-                    
-                    return Program.IsRegister.Contains(true);   
-                    
+                    if (CargarDocuemntos(Program.userName, Program.userPassword))
+                    {
+                        return Program.IsRegister.Contains(true);
+                    }  
 
                 } 
                 else
@@ -59,7 +59,7 @@ namespace ProcesoIngreso
 
 
         }
-        private static bool CargarDocuemntos(string userName, string userPassword)
+        public static bool CargarDocuemntos(string userName, string userPassword)
         {
             while(true){
                         
@@ -88,17 +88,10 @@ namespace ProcesoIngreso
                 Console.WriteLine("\n==========================\n"); 
                 // Mostramos las carreras disponibles
                 Console.WriteLine("Ingresa una de las sigueintes carreras: \n");
-                Dictionary <string, List<string>> carreras = new Dictionary<string, List<string>>
-                    {
-
-                        {"Carreras de Ingenieria", new List<string> { "==========", "Ingenieria civil", "Ingenieria de Sistemas", "Ingenieria Ambiental", "Ingenieria Industrial", "Ingenieria Mecanica", "Arquitectura", "=========="}},
-                        {"Carreas de Ciencias Basicas", new List<string> { "==========", "Biología", "Quimica", "Arqueología", "=========="}}, 
-                        {"Carreras de Humanidades", new List<string> {"==========", "trabajo Social", "Psicología","Comunicación Social", "==========" }},
-
-                    }; 
+                
                 
                 //Mostramos las facultades y las carreras disponibles
-                foreach(var facultad in carreras)
+                foreach(var facultad in Program.Carreras)
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine($"Facultad: {facultad.Key}");
@@ -132,20 +125,17 @@ namespace ProcesoIngreso
                         Console.Write("tu contraseña es: "); 
 
                         Console.ForegroundColor = ConsoleColor.DarkGreen; 
-                        Console.Write(userPassword.ToUpper()); 
+                        Console.Write(Program.userPassword.ToUpper()); 
 
-                        Program.UserBasicInfo.Add(userName, new List<string> {userForm, Program.userIcfes, userInvoice, Program.userFaculty, Program.userCarrer});
+                        Program.UserBasicInfo.Add(userName, new List<string> {userForm, Program.userIcfes, userInvoice, Program.userFaculty, Program.userCarrer, userPassword});
                         return true;   
                     }   
                 else
                 {
                     Console.WriteLine("Debes de agregar todos los docuemtos"); 
                 }
-
-                    
                 
             }
-
 
         }  
     }

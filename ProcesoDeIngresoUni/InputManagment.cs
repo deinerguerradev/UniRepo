@@ -1,5 +1,6 @@
 using System;
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using System.IO.Pipelines;
 using System.Threading; 
 
 namespace ProcesoIngreso
@@ -11,23 +12,17 @@ namespace ProcesoIngreso
             switch (accion)
             {
                 case 1: 
-                    SingUpProcess.SingUp();  
+                    Register.SingUp();  
                     Console.WriteLine("Acción Exitosa, espere un momento..."); 
                     Thread.Sleep(3000); 
                     break; 
                 case 2: 
-                    
-                    for (int n = 0; n>Program.UserName.Count; n++)
-                    {
-                        
-                        if (Program.UserName[n] == Program.userName) 
-                        {
-                            
-                        }
-                    }
+                {
+                    Result.AdmissionResult(); 
                     Console.WriteLine("Acción Exitosa, espere un momento..."); 
                     Thread.Sleep(3000); 
                     break; 
+                }
                 case 3: 
                     Console.WriteLine("presentar la prueba");
                     Console.WriteLine("Acción Exitosa, espere un momento..."); 

@@ -9,7 +9,8 @@ namespace ProcesoIngreso
         public static string userName = ""; 
         public static string userIcfes = "";
         public static string userCarrer = ""; 
-        public static string userFaculty = "";  
+        public static string userFaculty = "";
+        public static string userPassword = "";   
         public static List<string> UserName = new List<string>(); 
         public static List<string> UserPasswsword = new List<string>();
         public static Dictionary<string, List<string>> UserBasicInfo = new Dictionary<string, List<string>>(); 
@@ -18,6 +19,14 @@ namespace ProcesoIngreso
         public static List<bool> IsAdmited = new List<bool>(); 
         public static List<bool> IsAprobbed = new List<bool>(); 
         public static List<bool> IsEnrolled = new List<bool>();
+        public static Dictionary <string, List<string>> Carreras = new Dictionary<string, List<string>>
+                    {
+
+                        {"Ingenieria", new List<string> { "==========", "Ingenieria civil", "Ingenieria de Sistemas", "Ingenieria Ambiental", "Ingenieria Industrial", "Ingenieria Mecanica", "Arquitectura", "=========="}},
+                        {"Ciencias", new List<string> { "==========", "Biología", "Quimica", "Arqueología", "=========="}}, 
+                        {"Humanidades", new List<string> {"==========", "trabajo Social", "Psicología","Comunicación Social", "==========" }},
+
+                    }; 
 
         
 
