@@ -143,7 +143,7 @@ namespace ProcesoIngreso
 
                     if (CargarDocuemntos(userName, userPasswsword))
                     {
-                        return IsRegister[UserName.Count] = true; 
+                        return IsRegister.Contains(true);   
                     }
 
                 } 
@@ -172,12 +172,12 @@ namespace ProcesoIngreso
                 string userInvoice = Console.ReadLine().ToLower(); 
 
                 Console.WriteLine("Ingresa el resultado de tu prueba saber");
-                string userIcfes = Console.ReadLine(); 
+                string userIcfes = Console.ReadLine().ToLower(); 
 
                 Console.WriteLine("Ingresa formulario (lleno o no completado)");
                 string userForm = Console.ReadLine().ToLower(); 
 
-                if ((userInvoice == "pagada" && userForm == "lleno") && userIcfes != "")
+                if (userInvoice == "pagada" && userForm == "lleno")
                 {
                     Console.WriteLine("Completaste tu registro!");
                     Console.WriteLine($"Tú usario es: {userName}, tu contraseña es: {userPassword}");
