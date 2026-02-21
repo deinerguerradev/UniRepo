@@ -4,20 +4,20 @@ using System.Collections.Generic;
 
 namespace ProcesoIngreso 
 {
-    class Program 
+    public static class Program 
     {
-        private static string userName = ""; 
-        private static string userIcfes = "";
-        private static string userCarrer = ""; 
-        private static string userFaculty = "";  
-        private static List<string> UserName = new List<string>(); 
-        private static List<string> UserPasswsword = new List<string>();
-        private static Dictionary<string, List<string>> UserBasicInfo = new Dictionary<string, List<string>>(); 
-        private static List <int> UserId = new List<int>(); 
-        private static List<bool> IsRegister = new List<bool>(); 
-        private static List<bool> IsAdmited = new List<bool>(); 
-        private static List<bool> IsAprobbed = new List<bool>(); 
-        private static List<bool> IsEnrolled = new List<bool>(); 
+        public static string userName = ""; 
+        public static string userIcfes = "";
+        public static string userCarrer = ""; 
+        public static string userFaculty = "";  
+        public static List<string> UserName = new List<string>(); 
+        public static List<string> UserPasswsword = new List<string>();
+        public static Dictionary<string, List<string>> UserBasicInfo = new Dictionary<string, List<string>>(); 
+        public static List <int> UserId = new List<int>(); 
+        public static List<bool> IsRegister = new List<bool>(); 
+        public static List<bool> IsAdmited = new List<bool>(); 
+        public static List<bool> IsAprobbed = new List<bool>(); 
+        public static List<bool> IsEnrolled = new List<bool>(); 
       
         public static void Main (string [] args) 
         {
