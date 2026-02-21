@@ -1,10 +1,20 @@
 ﻿using System; 
 using System.Threading; 
+using System.Collections.Generic; 
 
 namespace ProcesoIngreso 
 {
     class Program 
     {
+        private static List<string> UserName = new List<string>(); 
+        private static List<string> UserPasswsword = new List<string>();
+        private static Dictionary<string, List<string>> UserDocuemts = new Dictionary<string, List<string>>(); 
+        private static List <int> UserId = new List<int>(); 
+        private static List<bool> IsRegister = new List<bool>(); 
+        private static List<bool> IsAdmited = new List<bool>(); 
+        private static List<bool> IsAprobbed = new List<bool>(); 
+        private static List<bool> IsEnrolled = new List<bool>(); 
+      
         public static void Main (string [] args) 
         {
             //Desplegamos una bienvenida para el usuario
@@ -60,7 +70,7 @@ namespace ProcesoIngreso
             switch (accion)
             {
                 case 1: 
-                    Console.WriteLine("Inscribirse");
+                    Inscribirse(); 
                     Console.WriteLine("Acción Exitosa, espere un momento..."); 
                     Thread.Sleep(3000); 
                     break; 
@@ -93,6 +103,95 @@ namespace ProcesoIngreso
                     Console.WriteLine("Ingresa una entrada valida");
                     break;         
             }
+        }
+        private static bool Inscribirse()
+        {
+            //Establecemos información para el usuario
+            Console.WriteLine("=============="); 
+            Console.WriteLine("Va a emepzar el proceso de inscripción...");
+            Thread.Sleep(3000); 
+            Console.WriteLine("==============");  
+
+            while (true)
+            {
+                //Establecemos entradas para el usuario
+                Console.Write("Ingresa tu Nombre Completo: "); 
+                string userName = Console.ReadLine(); 
+
+                Console.Write("Ingresa tu tarjeta de identidad: "); 
+                var userId = Console.ReadLine(); 
+
+                Console.Write("Ingresa tu tarjeta de identidad: "); 
+                string userPasswsword = Console.ReadLine(); 
+
+                //creamos una variable que almacena la cantidad de caracteres que tiene el userId
+                int cantidadNumerosId = userId.ToString().Length; 
+                
+
+                if (int.TryParse(userId, out int id)  && cantidadNumerosId <= 10)
+                {
+                    //Agregamos la infromación a la lista
+                    UserPasswsword.Add(userPasswsword); 
+                    UserName.Add(userName);
+                    UserId.Add(id);
+
+                    //agregamos algunos estados
+                    IsAdmited.Add(false); 
+                    IsAprobbed.Add(false); 
+                    IsEnrolled.Add(false); 
+                    IsRegister.Add(false);
+
+                    if (CargarDocuemntos(userName, userPasswsword))
+                    {
+                        return IsRegister[UserName.Count] = true; 
+                    }
+
+                } 
+                else
+                {
+                    Console.WriteLine("Ingresa bien tu tarjeta de identidad!"); 
+                }
+            }
+
+
+        }
+        private static bool CargarDocuemntos(string userName, string userPassword)
+        {
+            while(true){
+                //Le decimos al estudiante que carge sus docuementos
+                Console.WriteLine("Ingrese los sigueintes docuemtos");
+                string[] documents = {"1. Recibo de pago de Matricula", "2. Pruebas Saber", "3. Formulario de Inscripción lleno"}; 
+
+                //imprimimos las opciones
+                for (int i = 0; i>3; i++)
+                {
+                    Console.WriteLine(documents[i]); 
+                }
+
+                Console.WriteLine("Ingresa tu recibo de Matricula (pagada o no pagada)");
+                string userInvoice = Console.ReadLine().ToLower(); 
+
+                Console.WriteLine("Ingresa el resultado de tu prueba saber");
+                string userIcfes = Console.ReadLine(); 
+
+                Console.WriteLine("Ingresa formulario (lleno o no completado)");
+                string userForm = Console.ReadLine().ToLower(); 
+
+                if ((userInvoice == "pagada" && userForm == "lleno") && userIcfes != "")
+                {
+                    Console.WriteLine("Completaste tu registro!");
+                    Console.WriteLine($"Tú usario es: {userName}, tu contraseña es: {userPassword}");
+                    UserDocuemts[userName] = new List<string> {userIcfes, userForm, userInvoice}; 
+                    return true;   
+                }   
+                else
+                {
+                    Console.WriteLine("Debes de agregar todos los docuemtos"); 
+                }
+
+            }
+
+
         }
     }
 }
