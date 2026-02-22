@@ -24,12 +24,12 @@ namespace ProcesoIngreso
                     break; 
                 }
                 case 3: 
-                    Console.WriteLine("presentar la prueba");
+                    Test.TestProgram();
                     Console.WriteLine("Acción Exitosa, espere un momento..."); 
                     Thread.Sleep(3000); 
                     break; 
                 case 4: 
-                    Console.WriteLine("Revisar los resultados de la prueba");
+                    Test.DisplayResult();
                     Console.WriteLine("Acción Exitosa, espere un momento..."); 
                     Thread.Sleep(3000); 
                     break; 

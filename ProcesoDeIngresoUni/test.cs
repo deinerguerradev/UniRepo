@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading; 
+using System.Linq; 
 
 namespace ProcesoIngreso
 {
@@ -35,6 +36,40 @@ namespace ProcesoIngreso
                 Console.WriteLine("Comuniquese con Soporte técnico");
             }
 
+        }
+        public static void DisplayResult()
+        {
+            //Le peidmos al usuario que ingrese sus credenciales
+            Console.Write("Ingresa tu nombre: ");
+            string name = Console.ReadLine(); 
+
+            Console.Write("Ingresa tu constraseña: ");  
+            string passwrod = Console.ReadLine();
+
+            //Procesamos las entradas y verificamos si esta en el sistema
+            if (Program.UserBasicInfo.ContainsKey(name) && Program.UserBasicInfo[name].Contains(passwrod))
+            {
+                int index = Program.UserBasicInfo.Keys.ToList().IndexOf(name); 
+
+                if (index != -1)
+                {
+                    if (Program.IsAprobbed[index])
+                    {
+                        Console.WriteLine("Felicitaciones!, pasate la prueba!");
+                        Console.ForegroundColor = ConsoleColor.Green;  
+                        Console.WriteLine("Bienvenido a la Universidad de La Guajira"); 
+                        Console.ResetColor(); 
+                    }
+                    else
+                    {
+                        Console.WriteLine("No pasaste la prueba, No te desanimes!. Puedes volverlo intentar el Proximo Semestre"); 
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Comunicate con servicio tecnico"); 
+                }
+            }
         }
         private static void EngineerTest(string career)
         {

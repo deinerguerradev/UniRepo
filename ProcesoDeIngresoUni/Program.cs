@@ -10,7 +10,9 @@ namespace ProcesoIngreso
         public static string userIcfes = "";
         public static string userCarrer = ""; 
         public static string userFaculty = "";
-        public static string userPassword = "";   
+        public static string userPassword = ""; 
+        public static string AdmiName = "Adanud"; 
+        public static string AdmiPassword = "123456_";   
         public static List<string> UserName = new List<string>(); 
         public static List<string> UserPasswsword = new List<string>();
         public static Dictionary<string, List<string>> UserBasicInfo = new Dictionary<string, List<string>>(); 

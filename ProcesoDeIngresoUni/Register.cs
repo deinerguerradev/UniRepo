@@ -127,7 +127,8 @@ namespace ProcesoIngreso
                         Console.ForegroundColor = ConsoleColor.DarkGreen; 
                         Console.Write(Program.userPassword.ToUpper()); 
 
-                        Program.UserBasicInfo.Add(userName, new List<string> {userForm, Program.userIcfes, userInvoice, Program.userFaculty, Program.userCarrer, userPassword});
+                        Program.UserBasicInfo.Add(userName, new List<string> {userForm, Program.userIcfes, userInvoice, Program.userFaculty, Program.userCarrer, userPassword, });
+                        Program.UserName.Add(userName); 
                         return true;   
                     }   
                 else
