@@ -11,8 +11,10 @@ namespace ProcesoIngreso
         public static string userCarrer = ""; 
         public static string userFaculty = "";
         public static string userPassword = ""; 
-        public static string AdmiName = "Adanud"; 
-        public static string AdmiPassword = "123456_";   
+        public static string AdmiName = "adanud"; 
+        public static string AdmiName2 = "jose"; 
+        public static string AdmiPassword = "123456_";
+        public static string AdmiPassword2 = "34567_";   
         public static List<string> UserName = new List<string>(); 
         public static List<string> UserPasswsword = new List<string>();
         public static Dictionary<string, List<string>> UserBasicInfo = new Dictionary<string, List<string>>(); 
@@ -36,11 +38,13 @@ namespace ProcesoIngreso
         {
             //Desplegamos una bienvenida para el usuario
             Console.WriteLine("==========================================="); 
+            Console.ForegroundColor = ConsoleColor.DarkBlue; 
             Console.WriteLine("\nBienvenido a Uniguajira");
             Console.WriteLine("Esta es la plataforma para controlar tu proceso\n"); 
+            Console.ResetColor(); 
             Console.WriteLine("===========================================");
 
-            Thread.Sleep(3000); 
+            Upload.Motion();  
 
             //establecemos el bucle principal de nuestro programa 
             
@@ -48,7 +52,7 @@ namespace ProcesoIngreso
             {
                 
                 //Establecemos los procesos que puede realizar el aspirante 
-                List<string> accionesDelUsuario = new List<string>{"1. Inscribirse", "2. Revisar El estado De Aspirante", "3. Presentar la prueba", "4. Resvisar los resultados de la prueba", "5. Subir Docuementos Para Matricula", "6. Estado de Matricula", "7. Salir"};
+                List<string> accionesDelUsuario = new List<string>{"1. Inscribirse", "2. Revisar El estado De Aspirante", "3. Presentar la prueba", "4. Resvisar los resultados de la prueba", "5. Subir Docuementos Para Matricula", "6. Estado de Matricula", "7. Admi", "8. salir"};
                 Console.WriteLine("Puedes hacer las siguientes Acciónes");
 
                 //imprimimos las opciones para el usuario
@@ -67,16 +71,16 @@ namespace ProcesoIngreso
                     if (accion == 7)
                     {
                         Console.WriteLine("Esta saliendo de la aplicación");
-                        Thread.Sleep(3000);  
+                        Upload.Motion();   
                         return; 
                     }
-                    Thread.Sleep(2000); 
+                    Upload.Motion();  
                     InputManagment.ProcesarAccion(accion); 
                 }
                 else
                 {
                     //le decimos al usuario que no a ingresado una entrada valida
-                    Console.WriteLine("Ingresa una entrada valida (1, 2, 3, 4, 5, 6 o 7)"); 
+                    Console.WriteLine("Ingresa una entrada valida (1, 2, 3, 4, 5, 6, 7, 8)"); 
                 }
                   
             }

@@ -99,6 +99,7 @@ namespace ProcesoIngreso
                     {
                         Console.ForegroundColor= ConsoleColor.DarkGray;
                         Console.WriteLine($"- {carrera}"); 
+                        Console.ResetColor(); 
                     } 
                 }
 
