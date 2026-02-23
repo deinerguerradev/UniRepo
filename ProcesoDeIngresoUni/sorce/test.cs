@@ -35,6 +35,7 @@ namespace Process
 
                 if (AnswerReview(a, b))
                 {
+                    Console.WriteLine("Te admitieron!"); 
                     return true;     
                 }
                 else
@@ -53,6 +54,7 @@ namespace Process
 
                 if (AnswerReview(a, b))
                 {
+                    Console.WriteLine("Te admitieron!"); 
                     return true;     
                 }
                 else
@@ -70,6 +72,7 @@ namespace Process
 
                 if (AnswerReview(a, b))
                 {
+                    Console.WriteLine("Te admitieron!"); 
                     return true;     
                 }
                 else
