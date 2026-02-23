@@ -1,90 +1,108 @@
-﻿using System; 
+using System; 
+using System.Collections.Generic;
+using System.Dynamic;
+using System.Reflection.Metadata;
 using System.Threading; 
-using System.Collections.Generic; 
 
-namespace ProcesoIngreso 
+namespace Process
 {
-    public static class Program 
+    class Users
     {
-        public static string userName = ""; 
-        public static string userIcfes = "";
-        public static string userCarrer = ""; 
-        public static string userFaculty = "";
-        public static string userPassword = ""; 
-        public static string AdmiName = "adanud"; 
-        public static string AdmiName2 = "jose"; 
-        public static string AdmiPassword = "123456_";
-        public static string AdmiPassword2 = "34567_";   
-        public static List<string> UserName = new List<string>(); 
-        public static List<string> UserPasswsword = new List<string>();
-        public static Dictionary<string, List<string>> UserBasicInfo = new Dictionary<string, List<string>>(); 
-        public static List <int> UserId = new List<int>(); 
-        public static List<bool> IsRegister = new List<bool>(); 
-        public static List<bool> IsAdmited = new List<bool>(); 
-        public static List<bool> IsAprobbed = new List<bool>(); 
-        public static List<bool> IsEnrolled = new List<bool>();
-        public static Dictionary <string, List<string>> Carreras = new Dictionary<string, List<string>>
-                    {
+        public string Password { get; set; }
+        public string Id {get; set; }
+        public int Icfes {get; set; }
+        public string Career {get; set;}
 
-                        {"Ingenieria", new List<string> { "==========", "Ingenieria civil", "Ingenieria de Sistemas", "Ingenieria Ambiental", "Ingenieria Industrial", "Ingenieria Mecanica", "Arquitectura", "=========="}},
-                        {"Ciencias", new List<string> { "==========", "Biología", "Quimica", "Arqueología", "=========="}}, 
-                        {"Humanidades", new List<string> {"==========", "trabajo Social", "Psicología","Comunicación Social", "==========" }},
 
-                    }; 
+    }
+    class Program
+    {
+        public static string AdmiName = "Adanud"; 
 
-        
+        public static string AdmiPassword = "123456_"; 
+        public static Dictionary <string, Users> UserInfo = new Dictionary<string, Users>(); 
 
-        public static void Main (string [] args) 
+        public static Dictionary <string, List<string>> Faculty = new Dictionary<string, List<string>>
         {
-            //Desplegamos una bienvenida para el usuario
-            Console.WriteLine("==========================================="); 
-            Console.ForegroundColor = ConsoleColor.DarkBlue; 
-            Console.WriteLine("\nBienvenido a Uniguajira");
-            Console.WriteLine("Esta es la plataforma para controlar tu proceso\n"); 
-            Console.ResetColor(); 
-            Console.WriteLine("===========================================");
+            { "Ingenieria", new List<string> { "civil", "sistemas", "industrial" } },
 
-            Upload.Motion();  
+        };  
 
-            //establecemos el bucle principal de nuestro programa 
-            
-            while (true)
-            {
-                
-                //Establecemos los procesos que puede realizar el aspirante 
-                List<string> accionesDelUsuario = new List<string>{"1. Inscribirse", "2. Revisar El estado De Aspirante", "3. Presentar la prueba", "4. Resvisar los resultados de la prueba", "5. Subir Docuementos Para Matricula", "6. Estado de Matricula", "7. Admi", "8. salir"};
-                Console.WriteLine("Puedes hacer las siguientes Acciónes");
 
-                //imprimimos las opciones para el usuario
-                foreach(var acciones in accionesDelUsuario)
+
+        public static void Main (string [] agrs)
+        {
+            DisplayOptions(); 
+        }
+
+        public static void DisplayOptions ()
+        {
+            bool salir = false; 
+            while(!salir){
+                Console.WriteLine("======================");
+                Console.WriteLine("UNIVERSIDAD DE LA GUAJIRA");  
+                Console.WriteLine("======================"); 
+
+                LoandingAnimation(); 
+
+                Console.WriteLine("Bienvenido al proceso para ingresar a la universidad de la guajira");
+
+                Console.WriteLine("\nPuedes realizar las sigueintes acciones: ");  
+                string[] actions = {"1. Inscribirse", "2. Revisar estado de Inscripción", "3. Realizar prueba", "4. cargar Documentos", "5. Funciónes de aministrador", "6. salir"};
+
+                for (int i = 0; i<actions.Length; i++)
                 {
-                    Console.WriteLine(acciones); 
+                    Console.WriteLine(actions[i]); 
                 }
 
-                //Le pedimos al usario que ingrese una opcion
-                Console.WriteLine("Ingresa una de las opciones anteriores, (1, 2, 3, 4, 5 o 7)"); 
-                var opcion = Console.ReadLine(); 
+                Console.WriteLine("Ingresa una de las acciones anteriores"); 
+                string action = Console.ReadLine(); 
 
-                //Procesamos la entrada del usuario
-                if(int.TryParse(opcion, out int accion))
-                {
-                    if (accion == 7)
-                    {
-                        Console.WriteLine("Esta saliendo de la aplicación");
-                        Upload.Motion();   
-                        return; 
-                    }
-                    Upload.Motion();  
-                    InputManagment.ProcesarAccion(accion); 
-                }
-                else
-                {
-                    //le decimos al usuario que no a ingresado una entrada valida
-                    Console.WriteLine("Ingresa una entrada valida (1, 2, 3, 4, 5, 6, 7, 8)"); 
-                }
+                ProcessAction(action, salir);
+
+                LoandingAnimation(); 
                   
             }
+        }
 
+        public static void ProcessAction(string action, bool salir)
+        {
+
+            switch (action)
+            {
+                case "1":
+                    Enroll.RegisterInfo();  
+                    break;
+                case "2":
+                    Enroll.Result();  
+                    break;
+                case "3":
+                    Test.Beggin();
+                    break;
+                case "4":
+                    Document.Uploand(); 
+                    break;
+                case "5":
+                    Admi.Functions();  
+                    break;
+                case "6":
+                    salir = false;   
+                    break;
+                default: 
+                    Console.WriteLine("Ingresa un valor valido 1-8");
+                    break;  
+                 
+            }
+        }
+
+        public static void LoandingAnimation()
+        {
+            for (int i = 0; i<5; i++)
+            {
+                Console.Write("="); 
+                Thread.Sleep(1000); 
+            }
+            Console.WriteLine(); 
         }
     }
 }
