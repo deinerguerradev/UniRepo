@@ -27,6 +27,7 @@ namespace Process
             Console.Write("Resultado Icfes: "); 
             int userIcfes = Convert.ToInt32(Console.ReadLine()); 
 
+            //Condicional AND y sobre carfa de operador
             if (userIcfes != 0 && userId != "" && userPassword != "" && userName != "")
             {
                 Console.WriteLine("Ingenieria: ");

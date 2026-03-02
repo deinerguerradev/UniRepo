@@ -3,7 +3,22 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Reflection.Metadata;
 using System.Threading; 
+/*
+    *Nombre del Proyecto: Proceso de Ingreso para la universidad
+    *Fecha de Creación: 18 de febrero 2026
 
+    *Descripción: Se desarrolla un algoritmo secuencias que permite simular el proceso de Ingreso a la universidad 
+    para practicar la logica. establece valores de entradas para el uso del programa e interacción con el usuario. 
+    
+    *Dependendcias: utilizamos el sistema y las colecciones genericas, no usamos otras librerias que estas hasta el momento.
+    *Autor: Deiner Guerra. 
+
+    *segueire documentando el codigo el fin de semana además de agregar las siguientes funciones: 
+        - manejo de entradas invalidas
+        - mejora en el formato de las impresiones (mejorar la experienica de usuario)
+        - documentar el resto del código
+        - crear una documentación básica para este project
+*/
 namespace Process
 {
     class Users
@@ -56,7 +71,13 @@ namespace Process
                 }
 
                 Console.WriteLine("Ingresa una de las acciones anteriores"); 
-                string action = Console.ReadLine(); 
+                string action = Console.ReadLine();
+
+                if (action == "6" )
+                {
+                    Console.WriteLine("Saliendo del Programa");
+                    return;     
+                }
 
                 ProcessAction(action, salir);
 
@@ -85,9 +106,6 @@ namespace Process
                 case "5":
                     Admi.Functions();  
                     break;
-                case "6":
-                    salir = false;   
-                    break;
                 default: 
                     Console.WriteLine("Ingresa un valor valido 1-8");
                     break;  
@@ -95,7 +113,7 @@ namespace Process
             }
         }
 
-        public static void LoandingAnimation()
+         public static void LoandingAnimation()
         {
             for (int i = 0; i<5; i++)
             {
