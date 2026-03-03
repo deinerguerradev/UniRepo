@@ -47,7 +47,8 @@ namespace CourseAverage
                     Console.WriteLine("Inicio de Sesión exitoso");
                     MotionAnimation(); 
 
-                    DisplayOption(name); 
+                    DisplayOption(name);
+                    return;  
 
                 }
                 else
@@ -88,6 +89,7 @@ namespace CourseAverage
                 if (option == 4)
                 {
                     Console.WriteLine("saliendo del programa");
+                    break; 
                 }
                 else {
                     SelectOption(option); 
@@ -139,7 +141,7 @@ namespace CourseAverage
 
                 corte1 = notas[0] * pesoCorte1;
                 corte2 = notas[1] * pesoCorte2;  
-                corte3 = notas[1] * pesoCorte3; 
+                corte3 = notas[2] * pesoCorte3; 
 
                 PromedioTotal = corte1 + corte2 + corte3; 
 
