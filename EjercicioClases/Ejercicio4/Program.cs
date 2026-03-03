@@ -34,12 +34,19 @@ namespace UserDiscountDataBase
                             HasDiscount(i);
                             break;  
                         }
+                        if (UsersDoc.ContainsAnyExcept(userDoc)){Console.WriteLine("El usuario no se encuntra en la base de datos"); break;}
                     }
                 }
                 else
                 {
                     Console.WriteLine("Ingresa un valor valido"); 
                 }
+
+                //agregamos la opcioón de salir
+                Console.WriteLine("salir (S/N)"); 
+                string option = Console.ReadLine().ToLower(); 
+
+                if (option == "s"){break;}
 
             }while(true);
             
