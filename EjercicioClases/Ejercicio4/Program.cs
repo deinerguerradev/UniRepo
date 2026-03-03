@@ -12,44 +12,50 @@ namespace UserDiscountDataBase
 
         static void Main (string[] args) 
         {
-            UserCredencial(); 
+        
+            UserCredencial();
+    
         }
 
         static void UserCredencial ()
         {
-            Console.Write("Ingrese su numero de cedula: ");
-            var doc = Console.ReadLine(); 
 
-            if (int.TryParse(doc, out int userDoc))
+            do
             {
-                for (int i = 0; i<UsersDoc.Length; i++)
+                Console.Write("Ingrese su numero de cedula: ");
+                var doc = Console.ReadLine(); 
+
+                if (int.TryParse(doc, out int userDoc))
                 {
-                    if (userDoc == UsersDoc[i])
+                    for (int i = 0; i<UsersDoc.Length; i++)
                     {
-                        HasDiscount(i); 
-                    }
-                    if (userDoc != UsersDoc[i])
-                    {
-                        Console.WriteLine("Usuario no esta en la base de datos");
-                        break;  
+                        if (userDoc == UsersDoc[i])
+                        {
+                            HasDiscount(i);
+                            break;  
+                        }
                     }
                 }
-            }
-            else
-            {
-                Console.WriteLine("Ingresa un valor valido"); 
-            }
+                else
+                {
+                    Console.WriteLine("Ingresa un valor valido"); 
+                }
+
+            }while(true);
+            
         }
 
-        static void HasDiscount (int number)
+        static void HasDiscount (int number) 
         {
             if (UsersAge[number] > 60 && HasMembership[number])
             {
                 Console.WriteLine($"El usuario {UsersName[number]} tiene acceso al descuento"); 
+                return; 
             }
             else
             {
-                Console.WriteLine($"El usuario {UsersName[number]} no tiene acceso al descuento"); 
+                Console.WriteLine($"El usuario {UsersName[number]} no tiene acceso al descuento");
+                return;  
             }
         }
 
