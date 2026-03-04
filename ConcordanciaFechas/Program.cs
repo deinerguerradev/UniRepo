@@ -76,6 +76,7 @@ namespace DateKnow
         public static void Day()
         {
             int userNumber = UserInformation(); 
+            //evaluamos el numero que ingreso para ver si corresponde a alguno de la semana lunes - domingo
             EvaluateDay(userNumber); 
         }
 
@@ -135,6 +136,7 @@ namespace DateKnow
         public static void Moth()
         {
             int userNumber = UserInformation(); 
+            //evaluamos que el numero del usuario y mostramos el mes al que corresponda
             EvaluateMoth(userNumber); 
 
         }
@@ -233,6 +235,7 @@ namespace DateKnow
         
         public static void Animation()
         {
+            //imprime cada 1.5 segundos un signo igual pegado al anterior durante 7 seg
             for (int i = 0; i<5; i++)
             {
                 Console.Write("="); 
