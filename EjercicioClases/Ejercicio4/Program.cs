@@ -19,7 +19,7 @@ namespace UserDiscountDataBase
 
         static void UserCredencial ()
         {
-
+            //el bucle principal del programa
             do
             {
                 Console.Write("Ingrese su numero de cedula: ");
