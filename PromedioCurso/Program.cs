@@ -8,14 +8,8 @@ namespace CourseAverage
     {
         public static string[] ProfesorsNames = {"adanud", "maria", "smith", "pablo"};
         public static string [] ProfesorPassword = {"unipas", "soft45", "123desa", "p4bl9"};
-        public static Dictionary <string, List<double>> StudentsInfo = new Dictionary<string, List<double>>{
-            {"Deiner Guerra", new List<double> {4.0, 4.0, 4.0}}, 
-            {"Joan Garzia", new List<double> {4.0, 4.0, 4.0}}, 
-            {"isabella mejia", new List<double> {4.0, 4.0, 4.0}}, 
-            {"Leidys Guerra", new List<double> {4.0, 4.0, 4.0}}, 
-            {"Yeider Griego", new List<double> {2.5, 3.5, 5.0}}, 
-            {"Cristiano Ronaldo", new List<double> {5.0, 5.0, 5.0}}
-        };   
+        public static string[] StudentNames = {"Deiner", "Gabriel", "Antonio", "Emanuel", "Arley", "Cristian", "Yeider", "Esteban", "Emily", "Maria"};
+        public static float[] StudentScore = {3.3f, 3.0f, 4.0f, 4.0f,4.0f,4.0f,4.0f, 4.0f,4.0f,4.5f, };   
         static void Main (string[] args)
         {
             Console.WriteLine("======================");
@@ -76,7 +70,7 @@ namespace CourseAverage
             while(true){
 
                 Console.WriteLine($"Bienvenido profesor(a) {name}, Puedes hacer las sigueintes acciones");
-                string [] options = {"1. Ver estudiantes", "2. ver un estudiante en especifico", "3. Estadisticas de Curso", "4. salir"}; 
+                string [] options = {"1. Estadisticas de Curso", "2. salir"}; 
 
                 for (int i = 0; i < options.Length; i++)
                 {
@@ -86,7 +80,7 @@ namespace CourseAverage
                 Console.Write("\nIngresa una de las opciones anteriores: ");
                 int option = int.Parse(Console.ReadLine());
 
-                if (option == 4)
+                if (option == 2)
                 {
                     Console.WriteLine("saliendo del programa");
                     break; 
@@ -102,14 +96,8 @@ namespace CourseAverage
         static void SelectOption(int option)
         {  
              switch (option)
-            {
+            { 
                 case 1: 
-                    AllStudentsDetails(); 
-                    break; 
-                case 2: 
-                    StudentDetails();
-                    break; 
-                case 3: 
                     ClassDetails();
                     break; 
                 default:
@@ -125,79 +113,46 @@ namespace CourseAverage
             Console.WriteLine("INFORMACIÓN DE CURSO"); 
             Console.WriteLine("=================");
 
-            double corte1 = 0; 
-            double corte2 = 0; 
-            double corte3 = 0; 
+            float maxNum = StudentScore[0]; 
+            string studentName = ""; 
 
-            double pesoCorte1 = 0.30; 
-            double pesoCorte2 = 0.35; 
-            double pesoCorte3 = 0.35; 
-
-            double PromedioTotal = 0; 
-
-            foreach (var student in StudentsInfo)
+            //revisaremos quien es el que tiene mayor calificación
+            for (int i = 0; i < StudentScore.Length; i++)
             {
-                List<double> notas = student.Value; 
-
-                corte1 = notas[0] * pesoCorte1;
-                corte2 = notas[1] * pesoCorte2;  
-                corte3 = notas[2] * pesoCorte3; 
-
-                PromedioTotal = corte1 + corte2 + corte3; 
-
+                if (StudentScore[i] > maxNum)
+                {
+                    maxNum = StudentScore[i];
+                    studentName = StudentNames[i];  
+                     
+                }
             }
 
-            Console.WriteLine($"Promedio del primer corte: {corte1}");
-            Console.WriteLine($"Promedio del segundo corte: {corte2}");
-            Console.WriteLine($"Promedio del tercer corte: {corte3}");
+            Console.WriteLine($"El estudiante {studentName} es el que mayor Promedio tiene con {maxNum}"); 
 
-            Console.WriteLine($"Promedio total: {PromedioTotal}");    
+            //revisamos quien es el de menor calificación 
+
+            float minScore = StudentScore[0]; 
+            string studentName2 = StudentNames[0];  
+
+            for (int i = 1; i < StudentScore.Length; i++)
+            {
+                if (minScore > StudentScore[i])
+                {
+                    minScore = StudentScore[i]; 
+                    studentName2 = StudentNames[i]; 
+                }
+                
+            }
+
+            Console.WriteLine($"El estudiante {studentName2} es el que menor Promedio tiene con {minScore}");
+
+            //imprimimos la media del curso
+            Console.WriteLine($"La media del curso es: {StudentScore.Average()}"); 
+
            
         }
 
-        static void AllStudentsDetails ()
-        {
-            Console.WriteLine("======================"); 
-            Console.WriteLine("INFORMACIÓN DE TODOS LOS ESTUDIANTE"); 
-            Console.WriteLine("======================"); 
 
-            int numberScore = 1; 
-            foreach(var studetName in StudentsInfo)
-            {
-                Console.WriteLine($"Estudiante: {studetName.Key}");
-                foreach(var scores in studetName.Value)
-                {
-                    Console.WriteLine($"Corte {numberScore}: {scores} ");
-                    numberScore++;  
-                } 
-            }
-            
-        }
 
-        static void StudentDetails ()
-        {
-            Console.WriteLine("======================"); 
-            Console.WriteLine("INFORMACIÓN DE ESTUDIANTE EN ESPECIFICO"); 
-            Console.WriteLine("======================"); 
-
-            MotionAnimation(); 
-
-            Console.Write("Ingresa el Nombre del estudiante: ");
-            string nameStudent = Console.ReadLine(); 
-
-            int i = 1; 
-            
-            if (StudentsInfo.ContainsKey(nameStudent))
-            {
-                Console.WriteLine("Notas: ");
-                foreach (double score in StudentsInfo[nameStudent])
-                {
-                    
-                    Console.WriteLine($"corte {i}: {score}"); 
-                    i++; 
-                } 
-            }
-            
-        }
     }
 }
