@@ -16,7 +16,10 @@ Para poder correr estos algoritmos realizados es necesario cumplir con los sigue
 
 ## Estructura del Repositorio: 
 
-1. Algoritmo Del proceso de Ingreso a la Universidad de la Guajira en el programa de Ingeniería de Sistemas. 
+1. Algoritmo Del proceso de Ingreso a la Universidad de la Guajira en el programa de Ingeniería de Sistemas.
+2. Algoritmo que calcula el promedio y algunas caracteristicas aparte de un curso de 10 estudiantes.
+3. Algotimo de Concordacia de fechas, evalua un número y dependinedo de la acción seleccionada imprimira un día de la semana o un mes del año.
+4. Algoritmos de clase, estos se encuntran en la carpeta EJercicioClases
 
 ## ¿Cómo trabar con los archivos de este repositorio?
 
