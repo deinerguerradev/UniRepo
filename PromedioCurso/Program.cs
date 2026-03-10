@@ -17,7 +17,6 @@ namespace CourseAverage
             Console.WriteLine("======================");
 
             ProfessorBegin();
-             
         }
 
         static void ProfessorBegin()
@@ -29,7 +28,7 @@ namespace CourseAverage
             Console.WriteLine("======================\n");
 
             Console.Write("Ingresa tu Nombre: ");
-            string name = Console.ReadLine(); 
+            string name = Console.ReadLine().ToLower(); 
 
             Console.Write("Ingresa tu contraseña: ");
             string password = Console.ReadLine(); 
@@ -42,7 +41,7 @@ namespace CourseAverage
                     MotionAnimation(); 
 
                     DisplayOption(name);
-                    return;  
+                    break;  
 
                 }
                 else
@@ -114,7 +113,7 @@ namespace CourseAverage
             Console.WriteLine("=================");
 
             float maxNum = StudentScore[0]; 
-            string studentName = ""; 
+            string studentName = StudentNames[0]; 
 
             //revisaremos quien es el que tiene mayor calificación
             for (int i = 0; i < StudentScore.Length; i++)
