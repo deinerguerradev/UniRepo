@@ -6,8 +6,8 @@ class Program {
     {
         private static Dictionary<int, List<string>> StudentDataBase = new Dictionary<int, List<string>>
         {
-            {123456, new List<string> {"deiner guerra", "17", "true", "" }},
-            {123457, new List<string> {"Simo Garcia", "19", "false", "" }}
+            {123456, new List<string> {"deiner guerra", "17", "true" }},
+            {123457, new List<string> {"Simo Garcia", "19", "false" }}
         }; 
         private static float boletaEstudianteValor = 5000.0f; 
         
