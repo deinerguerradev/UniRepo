@@ -1,7 +1,5 @@
 ﻿using System; 
-
 class Program {
-
     class Student
     {
         private static Dictionary<int, List<string>> StudentDataBase = new Dictionary<int, List<string>>
@@ -9,8 +7,7 @@ class Program {
             {123456, new List<string> {"deiner guerra", "17", "true" }},
             {123457, new List<string> {"Simo Garcia", "19", "false" }}
         }; 
-        private static float boletaEstudianteValor = 5000.0f; 
-        
+        private static float boletaEstudianteValor = 6000.0f; 
 
         public Student(int code)
         {
@@ -19,6 +16,7 @@ class Program {
                 MakeOrder(code); 
             }
             else 
+                Console.WriteLine("No se encontro en la base de datos!"); 
                 return; 
         }
 
@@ -95,16 +93,99 @@ class Program {
 
     class Incapacitado
     {
-        public static string name; 
-        public static bool TieneIncapacidad;
-        public static int boleta; 
+        private static string input; 
+
+        private static float boletaValor = 3000.0f; 
+
+        public Incapacitado (string name)
+        {
+            MakeOrder(name); 
+        }
+        static void MakeOrder(string name)
+        {
+            Console.WriteLine($"Bienvenido {name}, Cuantos boletas Vas a Comprar?");
+            input = Console.ReadLine(); 
+
+            if (int.TryParse(input, out int tickets))
+            {
+                if (tickets > 1)
+                {
+                    Console.WriteLine($"Estimado {name}, has comprado {tickets} boletas, y en total tienes que pagar ${boletaValor*tickets}");
+                }
+                else 
+                    Console.WriteLine($"Estimado {name}, has comprado {tickets} boleta, y en total tienes que pagar ${boletaValor*tickets} COP"); 
+            } 
+            else
+            {
+                Console.WriteLine("Ingresa un valor valido"); 
+            }
+        }
+
+
     }
 
     class Person
     {
-        public static string name; 
-        public static int age; 
-        public static int boleta;   
+        private static string input; 
+        private static float boletaValorNormal = 7000.0f; 
+        private static float boletanino = 4000.0f; 
+        private static float boletaAdulto = 9000.0f;
+        private static float boletaAdultoMayor = 5000.0f; 
+
+        public Person (string name, int age)
+        {
+            MakeOrder(name, age); 
+        }
+        static void MakeOrder (string name, int age)
+        {
+            Console.WriteLine("Ingrese la cantidad de Boletas a comprar");
+            input = Console.ReadLine(); 
+
+            if(int.TryParse(input, out int Tickets))
+            {
+                if (Tickets > 0)
+                {
+                    if (age < 12)
+                    {
+                        if (Tickets > 1)
+                            Console.WriteLine($"Querido {name}, has comprado {Tickets} boletas, y tienes que pagar {boletanino * Tickets}");
+                        else 
+                           Console.WriteLine($"Querido {name}, has comprado {Tickets} boleta, y tienes que pagar {boletanino * Tickets}");  
+
+                    }
+                    if (age > 12 && age < 18)
+                    {
+                        if (Tickets > 1)
+                            Console.WriteLine($"Querido {name}, has comprado {Tickets} boletas, y tienes que pagar {boletaValorNormal * Tickets}");
+                        else 
+                           Console.WriteLine($"Querido {name}, has comprado {Tickets} boleta, y tienes que pagar {boletaValorNormal * Tickets}");  
+
+                    }
+                    if (age >= 18 && age <= 60)
+                    {
+                        if (Tickets > 1)
+                            Console.WriteLine($"Querido {name}, has comprado {Tickets} boletas, y tienes que pagar {boletaAdulto * Tickets}");
+                        else 
+                           Console.WriteLine($"Querido {name}, has comprado {Tickets} boleta, y tienes que pagar {boletaAdulto * Tickets}");  
+
+                    }
+                    if (age > 60 )
+                    {
+                        if (Tickets > 1)
+                            Console.WriteLine($"Querido {name}, has comprado {Tickets} boletas, y tienes que pagar {boletaAdultoMayor * Tickets}");
+                        else 
+                           Console.WriteLine($"Querido {name}, has comprado {Tickets} boleta, y tienes que pagar {boletaAdultoMayor * Tickets}");  
+
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Esta cantidad es invalida!"); 
+                }
+            } 
+        }
+
+
     }
 
     
@@ -134,6 +215,7 @@ class Program {
                 BeginStudent(); 
                 break; 
             case "n":
+                Beginperson(); 
                 break;
             default: 
                 Console.WriteLine("Ingresa un valor valido");
@@ -158,6 +240,62 @@ class Program {
             Console.WriteLine("Ingresa un valor adecuado"); 
         }
               
+    }
+
+    public static void Beginperson()
+    {
+        Console.Write("Ingrese su nombre: ");
+        string name = Console.ReadLine();
+
+       
+        
+        Console.Write("Ingrese su edad: ");
+        string age = Console.ReadLine(); 
+
+        if (int.TryParse(age, out int userAge))
+        {
+            if (userAge > 0)
+            {
+                Console.WriteLine("Tienes Alguna Discapacidad? (s/n)");
+                string input = Console.ReadLine().ToLower(); 
+
+                switch (input)
+                {
+                    case "s":
+                        Incapcitada(name);  
+                        break; 
+                    case "n": 
+                        NormalPerson(name, userAge);  
+                        break; 
+                    default: 
+                        Console.WriteLine("Solo debes de ingresar S o N");
+                        break;  
+                }
+            } 
+            else
+            {
+                Console.WriteLine("Ingresa una edad valida"); 
+            }
+        } 
+        else 
+            Console.WriteLine("Debes de ingresar un valor valido!"); 
+     
+
+        static void Incapcitada (string name)
+        {
+            Incapacitado incapacitado = new Incapacitado(name); 
+
+            Console.WriteLine(incapacitado); 
+        }
+
+        static void NormalPerson (string name, int age)
+        {
+            Person persona = new Person(name, age); 
+
+            Console.WriteLine(persona); 
+        }
+
+
     }
     
     
