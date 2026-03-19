@@ -295,9 +295,6 @@ class Program {
             Console.WriteLine(persona); 
         }
 
-
     }
-    
-    
 
 }
