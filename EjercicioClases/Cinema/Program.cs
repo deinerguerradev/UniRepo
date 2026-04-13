@@ -5,7 +5,7 @@ class Program {
         private static Dictionary<int, List<string>> StudentDataBase = new Dictionary<int, List<string>>
         {
             {123456, new List<string> {"deiner guerra", "17", "true" }},
-            {123457, new List<string> {"Simo Garcia", "19", "false" }}
+            {123457, new List<string> {"simon garcia", "19", "false" }}
         }; 
         private static float boletaEstudianteValor = 6000.0f; 
 
@@ -54,8 +54,15 @@ class Program {
             }   
             else
             {
-                Console.WriteLine("No puede comprar!"); 
-                //agregar proceso para estudiantes con tarjetas no validas
+                Console.WriteLine("No puede comprar como estudiante, tienes un codigo inactivo, se iniciara un proceso para comprar como persona!"); 
+                string studentName = StudentDataBase[code][0]; 
+                string studentAge = StudentDataBase[code][1];
+
+                if (int.TryParse(studentAge, out int age))
+                {
+                    Person student= new Person(studentName, age); 
+                    Console.WriteLine(student); 
+                } 
             } 
 
         }
@@ -169,7 +176,7 @@ class Program {
                            Console.WriteLine($"Querido {name}, has comprado {Tickets} boleta, y tienes que pagar {boletaAdulto * Tickets}");  
 
                     }
-                    if (age > 60 )
+                    if (age > 60 && age <= 150)
                     {
                         if (Tickets > 1)
                             Console.WriteLine($"Querido {name}, has comprado {Tickets} boletas, y tienes que pagar {boletaAdultoMayor * Tickets}");
@@ -215,6 +222,7 @@ class Program {
                 BeginStudent(); 
                 break; 
             case "n":
+                Console.Clear(); 
                 Beginperson(); 
                 break;
             default: 
