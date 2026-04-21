@@ -17,7 +17,7 @@ using System.Threading;
         - manejo de entradas invalidas
         - mejora en el formato de las impresiones (mejorar la experienica de usuario)
         - documentar el resto del código
-        - crear una documentación básica para este project
+        - crear una documentación básica para este projecto
 */
 namespace Process
 {
@@ -43,7 +43,7 @@ namespace Process
 
         };  
 
-
+        Users user = new Users(); 
 
         public static void Main (string [] agrs)
         {
@@ -54,6 +54,7 @@ namespace Process
         {
             bool salir = false; 
             while(!salir){
+                
                 Console.WriteLine("======================");
                 Console.WriteLine("UNIVERSIDAD DE LA GUAJIRA");  
                 Console.WriteLine("======================"); 

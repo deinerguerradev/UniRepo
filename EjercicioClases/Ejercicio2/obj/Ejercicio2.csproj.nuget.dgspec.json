@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Usuario\\DeinerCode\\UniRepo\\Ejercicio de clases\\Ejercicio2\\Ejercicio2.csproj": {}
+    "C:\\Users\\Usuario\\DeinerCode\\UniRepo\\EjercicioClases\\Ejercicio2\\Ejercicio2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Usuario\\DeinerCode\\UniRepo\\Ejercicio de clases\\Ejercicio2\\Ejercicio2.csproj": {
+    "C:\\Users\\Usuario\\DeinerCode\\UniRepo\\EjercicioClases\\Ejercicio2\\Ejercicio2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\DeinerCode\\UniRepo\\Ejercicio de clases\\Ejercicio2\\Ejercicio2.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\DeinerCode\\UniRepo\\EjercicioClases\\Ejercicio2\\Ejercicio2.csproj",
         "projectName": "Ejercicio2",
-        "projectPath": "C:\\Users\\Usuario\\DeinerCode\\UniRepo\\Ejercicio de clases\\Ejercicio2\\Ejercicio2.csproj",
+        "projectPath": "C:\\Users\\Usuario\\DeinerCode\\UniRepo\\EjercicioClases\\Ejercicio2\\Ejercicio2.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\DeinerCode\\UniRepo\\Ejercicio de clases\\Ejercicio2\\obj\\",
+        "outputPath": "C:\\Users\\Usuario\\DeinerCode\\UniRepo\\EjercicioClases\\Ejercicio2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
